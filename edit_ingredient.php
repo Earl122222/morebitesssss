@@ -13,9 +13,10 @@ $errors = [];
 $ingredient_id = isset($_GET['id']) ? $_GET['id'] : '';
 $category_id = '';
 $ingredient_name = '';
-$ingredient_quantity = 0; // Ensure it's numeric
+$ingredient_quantity = 0;
 $ingredient_unit = '';
 $ingredient_status = 'Available';
+$threshold = 0;
 
 if ($ingredient_id) {
     $stmt = $pdo->prepare("SELECT * FROM ingredients WHERE ingredient_id = :ingredient_id");
@@ -25,22 +26,40 @@ if ($ingredient_id) {
     if ($ingredient) {
         $category_id = $ingredient['category_id'];
         $ingredient_name = $ingredient['ingredient_name'];
-        $ingredient_quantity = (float) $ingredient['ingredient_quantity']; // Convert to float
+        $ingredient_quantity = (int) $ingredient['ingredient_quantity']; // Convert to integer
         $ingredient_unit = $ingredient['ingredient_unit'];
         $ingredient_status = $ingredient['ingredient_status'];
+        $threshold = (int) $ingredient['threshold']; // Convert to integer
     } else {
         $message = 'Ingredient not found.';
     }
 }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
     $category_id = $_POST['category_id'];
     $ingredient_name = trim($_POST['ingredient_name']);
     $ingredient_unit = trim($_POST['ingredient_unit']);
     $ingredient_status = $_POST['ingredient_status'];
-    $action = $_POST['action'] ?? ''; // Determine restock or deduct action
-    $change_quantity = (float) $_POST['change_quantity']; // Convert to float
+    $threshold = (int) $_POST['threshold'];
+    $action = $_POST['action'] ?? '';
+    
+    // Handle direct quantity change
+    if (isset($_POST['ingredient_quantity'])) {
+        $ingredient_quantity = (int) $_POST['ingredient_quantity']; // Convert to integer
+    } else {
+        $change_quantity = (int) $_POST['change_quantity']; // Convert to integer
+
+        // Adjust quantity based on restock or deduct action
+        if ($action === "restock") {
+            $ingredient_quantity += $change_quantity;
+        } elseif ($action === "deduct") {
+            if ($ingredient_quantity >= $change_quantity) {
+                $ingredient_quantity -= $change_quantity;
+            } else {
+                $errors[] = 'Cannot deduct more than available quantity.';
+            }
+        }
+    }
 
     // Validate fields
     if (empty($category_id)) {
@@ -52,24 +71,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($ingredient_unit)) {
         $errors[] = 'Unit of Measurement is required.';
     }
-    if ($change_quantity < 0) {
+    if ($ingredient_quantity < 0) {
         $errors[] = 'Quantity cannot be negative.';
     }
-
-    // Adjust quantity based on restock or deduct action
-    if ($action === "restock") {
-        $ingredient_quantity += $change_quantity;
-    } elseif ($action === "deduct") {
-        if ($ingredient_quantity >= $change_quantity) {
-            $ingredient_quantity -= $change_quantity;
-        } else {
-            $errors[] = 'Cannot deduct more than available quantity.';
-        }
+    if ($threshold < 0) {
+        $errors[] = 'Threshold cannot be negative.';
     }
 
     if (empty($errors)) {
-        $stmt = $pdo->prepare("UPDATE ingredients SET category_id = ?, ingredient_name = ?, ingredient_quantity = ?, ingredient_unit = ?, ingredient_status = ? WHERE ingredient_id = ?");
-        $stmt->execute([$category_id, $ingredient_name, $ingredient_quantity, $ingredient_unit, $ingredient_status, $ingredient_id]);
+        $stmt = $pdo->prepare("UPDATE ingredients SET category_id = ?, ingredient_name = ?, ingredient_quantity = ?, ingredient_unit = ?, ingredient_status = ?, threshold = ? WHERE ingredient_id = ?");
+        $stmt->execute([$category_id, $ingredient_name, $ingredient_quantity, $ingredient_unit, $ingredient_status, $threshold, $ingredient_id]);
         header("Location: ingredients.php");
         exit;
     } else {
@@ -82,7 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 include('header.php');
-
 ?>
 
 <h1 class="mt-4">Edit Ingredient</h1>
@@ -103,7 +113,7 @@ if ($message !== '') {
         <div class="card">
             <div class="card-header">Edit Ingredient</div>
             <div class="card-body">
-                <form method="POST" action="edit_ingredient.php?id=<?php echo htmlspecialchars($ingredient_id); ?>">
+                <form method="POST" action="edit_ingredient.php?id=<?php echo htmlspecialchars($ingredient_id); ?>" id="ingredientForm">
                     <div class="mb-3">
                         <label for="category_id">Category</label>
                         <select name="category_id" id="category_id" class="form-select">
@@ -119,11 +129,23 @@ if ($message !== '') {
                     </div>
                     <div class="mb-3">
                         <label for="ingredient_quantity">Current Quantity</label>
-                        <input type="text" class="form-control" value="<?php echo htmlspecialchars($ingredient_quantity); ?>" readonly>
+                        <div class="input-group">
+                            <button type="button" class="btn btn-danger" onclick="decrementQuantity()">-</button>
+                            <input type="number" name="ingredient_quantity" id="ingredient_quantity" class="form-control text-center" value="<?php echo htmlspecialchars($ingredient_quantity); ?>" min="0" step="1">
+                            <button type="button" class="btn btn-success" onclick="incrementQuantity()">+</button>
+                        </div>
                     </div>
                     <div class="mb-3">
-                        <label for="change_quantity">Change Quantity</label>
-                        <input type="number" name="change_quantity" id="change_quantity" class="form-control" step="0.01">
+                        <label for="change_quantity">Change Amount</label>
+                        <div class="input-group">
+                            <input type="number" name="change_quantity" id="change_quantity" class="form-control text-center" min="1" step="1" value="1">
+                            <button type="button" class="btn btn-success" onclick="restockQuantity()">
+                                <i class="fas fa-plus"></i> Add Stock
+                            </button>
+                            <button type="button" class="btn btn-danger" onclick="deductQuantity()">
+                                <i class="fas fa-minus"></i> Remove Stock
+                            </button>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="ingredient_unit">Unit</label>
@@ -136,10 +158,16 @@ if ($message !== '') {
                             <option value="Out of Stock" <?php if ($ingredient_status == 'Out of Stock') echo 'selected'; ?>>Out of Stock</option>
                         </select>
                     </div>
+                    <div class="mb-3">
+                        <label for="threshold">Threshold Amount</label>
+                        <div class="input-group">
+                            <input type="number" name="threshold" id="threshold" class="form-control" min="0" step="1" value="<?php echo htmlspecialchars($threshold); ?>" required>
+                            <span class="input-group-text"><?php echo htmlspecialchars($ingredient_unit); ?></span>
+                        </div>
+                        <small class="form-text text-muted">Set the minimum stock level before showing in Low Stock.</small>
+                    </div>
                     <div class="mt-4 text-center">
                         <input type="hidden" name="ingredient_id" value="<?php echo htmlspecialchars($ingredient_id); ?>">
-                        <button type="submit" name="action" value="restock" class="btn btn-success">Restock</button>
-                        <button type="submit" name="action" value="deduct" class="btn btn-danger">Deduct</button>
                         <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
                 </form>
@@ -147,6 +175,74 @@ if ($message !== '') {
         </div>
     </div>
 </div>
+
+<script>
+function incrementQuantity() {
+    const quantityInput = document.getElementById('ingredient_quantity');
+    let currentValue = parseInt(quantityInput.value) || 0;
+    quantityInput.value = currentValue + 1;
+    updateStatus();
+}
+
+function decrementQuantity() {
+    const quantityInput = document.getElementById('ingredient_quantity');
+    let currentValue = parseInt(quantityInput.value) || 0;
+    if (currentValue > 0) {
+        quantityInput.value = currentValue - 1;
+        updateStatus();
+    }
+}
+
+function restockQuantity() {
+    const quantityInput = document.getElementById('ingredient_quantity');
+    const changeInput = document.getElementById('change_quantity');
+    let currentValue = parseInt(quantityInput.value) || 0;
+    let changeValue = parseInt(changeInput.value) || 0;
+    
+    if (changeValue > 0) {
+        quantityInput.value = currentValue + changeValue;
+        updateStatus();
+    }
+}
+
+function deductQuantity() {
+    const quantityInput = document.getElementById('ingredient_quantity');
+    const changeInput = document.getElementById('change_quantity');
+    let currentValue = parseInt(quantityInput.value) || 0;
+    let changeValue = parseInt(changeInput.value) || 0;
+    
+    if (currentValue >= changeValue) {
+        quantityInput.value = currentValue - changeValue;
+        updateStatus();
+    } else {
+        alert('Cannot deduct more than available quantity');
+    }
+}
+
+function updateStatus() {
+    const quantityInput = document.getElementById('ingredient_quantity');
+    const statusSelect = document.getElementById('ingredient_status');
+    
+    if (parseInt(quantityInput.value) === 0) {
+        statusSelect.value = 'Out of Stock';
+    } else {
+        statusSelect.value = 'Available';
+    }
+}
+
+// Add event listener to quantity input for manual changes
+document.getElementById('ingredient_quantity').addEventListener('change', function() {
+    if (this.value < 0) {
+        this.value = 0;
+    }
+    updateStatus();
+});
+
+// Initialize status on page load
+document.addEventListener('DOMContentLoaded', function() {
+    updateStatus();
+});
+</script>
 
 <?php
 include('footer.php');

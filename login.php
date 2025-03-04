@@ -11,6 +11,7 @@ if (!file_exists('db_connect.php')) {
 
 require_once 'db_connect.php';
 require_once 'auth_function.php';
+require_once 'db_functions.php'; // Include the db_functions.php file
 
 // Function to check and reconnect if needed
 function checkConnection($pdo) {
@@ -68,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
         }
     } catch (PDOException $e) {
+        error_log('PDOException during login attempts check: ' . $e->getMessage());
         if ($e->getCode() == 'HY000' || strpos($e->getMessage(), 'server has gone away') !== false) {
             $errors[] = "Connection lost. Please try again.";
         } else {
@@ -139,63 +141,72 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Debug: Log the user data
                 error_log('User data from database: ' . print_r($user, true));
                 
-                if ($user && password_verify($password, $user['user_password'])) {
-                    // Ensure connection is active before clearing attempts
-                    $pdo = checkConnection($pdo);
-                    
-                    // Clear login attempts on successful login
-                    $clear_attempts = $pdo->prepare("DELETE FROM login_attempts WHERE email = ?");
-                    $clear_attempts->execute([$email]);
-                    
-                    // Store session variables
-                    $_SESSION['user_id'] = $user['user_id'];
-                    $_SESSION['user_type'] = $user['user_type'];
-                    $_SESSION['user_logged_in'] = true;
-                    $_SESSION['user_name'] = $user['user_name'];
-                    
-                    // Clear CAPTCHA session after successful login
-                    unset($_SESSION['captcha_code']);
-                    
-                    // Debug: Log the session data
-                    error_log('Login successful. Session data: ' . print_r($_SESSION, true));
-                    
-                    // Redirect to dashboard
-                    header('Location: dashboard.php');
-                    exit();
-                } else {
-                    // Ensure connection is active before recording attempt
-                    $pdo = checkConnection($pdo);
-                    
-                    // Record failed attempt
-                    $record_attempt = $pdo->prepare("INSERT INTO login_attempts (email, timestamp) VALUES (?, NOW())");
-                    $record_attempt->execute([$email]);
-                    
-                    if (!$user) {
-                        $errors[] = "Invalid email or account inactive.";
+                if ($user) {
+                    if (password_verify($password, $user['user_password'])) {
+                        // Debug: Log password verification success
+                        error_log('Password verification successful for user: ' . $user['user_email']);
+                        
+                        // Ensure connection is active before clearing attempts
+                        $pdo = checkConnection($pdo);
+                        
+                        // Clear login attempts on successful login
+                        $clear_attempts = $pdo->prepare("DELETE FROM login_attempts WHERE email = ?");
+                        $clear_attempts->execute([$email]);
+                        
+                        // Store session variables
+                        $_SESSION['user_id'] = $user['user_id'];
+                        $_SESSION['user_type'] = $user['user_type'];
+                        $_SESSION['user_logged_in'] = true;
+                        $_SESSION['user_name'] = $user['user_name'];
+                        
+                        // Clear CAPTCHA session after successful login
+                        unset($_SESSION['captcha_code']);
+                        
+                        // Debug: Log the session data
+                        error_log('Login successful. Session data: ' . print_r($_SESSION, true));
+                        
+                        // Redirect to dashboard
+                        header('Location: dashboard.php');
+                        exit();
                     } else {
+                        // Debug: Log password verification failure
+                        error_log('Password verification failed for user: ' . $user['user_email']);
                         $errors[] = "Invalid password.";
                     }
+                } else {
+                    // Debug: Log user not found or inactive
+                    error_log('User not found or inactive for email: ' . $email);
+                    $errors[] = "Invalid email or account inactive.";
+                }
 
-                    // Check if this attempt should trigger lockout
-                    $check_attempts->execute([$email]);
-                    $new_attempt_count = $check_attempts->fetch(PDO::FETCH_ASSOC)['attempts'];
-                    if ($new_attempt_count >= 3) {
-                        $errors[] = "Too many failed attempts. Account is now locked for 2 minutes.";
-                        $isLocked = true;
-                        $last_attempt = strtotime($attempt_result['last_attempt']);
-                        $time_passed = time() - $last_attempt;
-                        $time_remaining = max(120 - $time_passed, 0);
-                        $minutes = floor($time_remaining / 60);
-                        $seconds = $time_remaining % 60;
-                        $formatted_time = sprintf("%02d:%02d", $minutes, $seconds);
-                        $errors[] = "Please wait {$formatted_time} before trying again.";
-                        goto show_form;
-                    } else {
-                        $remaining_attempts = 3 - $new_attempt_count;
-                        $errors[] = "Login failed. {$remaining_attempts} attempts remaining before lockout.";
-                    }
+                // Ensure connection is active before recording attempt
+                $pdo = checkConnection($pdo);
+                
+                // Record failed attempt
+                $record_attempt = $pdo->prepare("INSERT INTO login_attempts (email, timestamp) VALUES (?, NOW())");
+                $record_attempt->execute([$email]);
+
+                // Check if this attempt should trigger lockout
+                $check_attempts->execute([$email]);
+                $new_attempt_count = $check_attempts->fetch(PDO::FETCH_ASSOC)['attempts'];
+                if ($new_attempt_count >= 3) {
+                    $errors[] = "Too many failed attempts. Account is now locked for 2 minutes.";
+                    $isLocked = true;
+                    $last_attempt = strtotime($attempt_result['last_attempt']);
+                    $time_passed = time() - $last_attempt;
+                    $time_remaining = max(120 - $time_passed, 0);
+                    $minutes = floor($time_remaining / 60);
+                    $seconds = $time_remaining % 60;
+                    $formatted_time = sprintf("%02d:%02d", $minutes, $seconds);
+                    $errors[] = "Please wait {$formatted_time} before trying again.";
+                    goto show_form;
+                } else {
+                    $remaining_attempts = 3 - $new_attempt_count;
+                    $errors[] = "Login failed. {$remaining_attempts} attempts remaining before lockout.";
                 }
             } catch (PDOException $e) {
+                // Log the specific PDO exception message
+                error_log('PDOException during login attempt: ' . $e->getMessage());
                 if ($e->getCode() == 'HY000' || strpos($e->getMessage(), 'server has gone away') !== false) {
                     $errors[] = "Connection lost. Please try again.";
                 } else {

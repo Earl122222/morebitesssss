@@ -3,7 +3,7 @@ session_start();
 
 class Session {
     private $user_id;
-    private $user_role;
+    private $user_type;
     private $branch_id;
     private $is_logged_in = false;
 
@@ -14,7 +14,7 @@ class Session {
     private function check_login() {
         if (isset($_SESSION['user_id'])) {
             $this->user_id = $_SESSION['user_id'];
-            $this->user_role = $_SESSION['user_role'];
+            $this->user_type = $_SESSION['user_type'];
             $this->branch_id = $_SESSION['branch_id'] ?? null;
             $this->is_logged_in = true;
         }
@@ -22,24 +22,24 @@ class Session {
 
     public function set_user_data($data) {
         $_SESSION['user_id'] = $data['user_id'];
-        $_SESSION['user_role'] = $data['role'];
+        $_SESSION['user_type'] = $data['user_type'];
         $_SESSION['branch_id'] = $data['branch_id'] ?? null;
         $_SESSION['username'] = $data['username'];
         
         $this->user_id = $data['user_id'];
-        $this->user_role = $data['role'];
+        $this->user_type = $data['user_type'];
         $this->branch_id = $data['branch_id'] ?? null;
         $this->is_logged_in = true;
     }
 
     public function logout() {
         unset($_SESSION['user_id']);
-        unset($_SESSION['user_role']);
+        unset($_SESSION['user_type']);
         unset($_SESSION['branch_id']);
         unset($_SESSION['username']);
         
         $this->user_id = null;
-        $this->user_role = null;
+        $this->user_type = null;
         $this->branch_id = null;
         $this->is_logged_in = false;
         
@@ -54,8 +54,8 @@ class Session {
         return $this->user_id;
     }
 
-    public function get_user_role() {
-        return $this->user_role;
+    public function get_user_type() {
+        return $this->user_type;
     }
 
     public function get_branch_id() {
@@ -63,15 +63,19 @@ class Session {
     }
 
     public function is_admin() {
-        return $this->user_role === 'admin';
+        return strtolower($this->user_type) === 'admin';
+    }
+
+    public function is_staff() {
+        return strtolower($this->user_type) === 'staff';
     }
 
     public function is_manager() {
-        return $this->user_role === 'manager';
+        return $this->user_type === 'manager';
     }
 
     public function is_cashier() {
-        return $this->user_role === 'cashier';
+        return $this->user_type === 'cashier';
     }
 
     // Function to filter records based on user role and branch

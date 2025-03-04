@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $ingredient_quantity = trim($_POST['ingredient_quantity']);
     $ingredient_unit = trim($_POST['ingredient_unit']);
     $ingredient_status = $_POST['ingredient_status'];
+    $threshold = trim($_POST['threshold']);
 
     // Validate fields
     if (empty($category_id)) {
@@ -33,6 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (empty($ingredient_unit)) {
         $errors[] = 'Unit of Measurement is required.';
     }
+    if (empty($threshold) || !is_numeric($threshold)) {
+        $errors[] = 'Valid Threshold Amount is required.';
+    }
 
     // Check if the ingredient already exists
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM ingredients WHERE ingredient_name = :ingredient_name");
@@ -44,8 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if (empty($errors)) {
-        $stmt = $pdo->prepare("INSERT INTO ingredients (category_id, ingredient_name, ingredient_quantity, ingredient_unit, ingredient_status) VALUES (?, ?, ?, ?, ?)");
-        $stmt->execute([$category_id, $ingredient_name, $ingredient_quantity, $ingredient_unit, $ingredient_status]);
+        $stmt = $pdo->prepare("INSERT INTO ingredients (category_id, ingredient_name, ingredient_quantity, ingredient_unit, ingredient_status, threshold) VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$category_id, $ingredient_name, $ingredient_quantity, $ingredient_unit, $ingredient_status, $threshold]);
         header("Location: ingredients.php");
         exit;
     } else {
@@ -79,7 +83,7 @@ if ($message !== '') {
         <div class="card">
             <div class="card-header">Add Ingredient</div>
             <div class="card-body">
-                <form method="POST" action="add_ingredient.php">
+                <form method="POST" action="add_ingredients.php">
                     <div class="mb-3">
                         <label for="category_id">Category</label>
                         <select name="category_id" id="category_id" class="form-select">
@@ -102,6 +106,14 @@ if ($message !== '') {
                         <input type="text" name="ingredient_unit" id="ingredient_unit" class="form-control">
                     </div>
                     <div class="mb-3">
+                        <label for="threshold">Threshold Amount</label>
+                        <div class="input-group">
+                            <input type="number" name="threshold" id="threshold" class="form-control" step="0.01" required min="0">
+                            <span class="input-group-text threshold-unit"></span>
+                        </div>
+                        <small class="form-text text-muted">Set the minimum stock level before showing in Low Stock.</small>
+                    </div>
+                    <div class="mb-3">
                         <label for="ingredient_status">Status</label>
                         <select name="ingredient_status" id="ingredient_status" class="form-select">
                             <option value="Available">Available</option>
@@ -116,6 +128,13 @@ if ($message !== '') {
         </div>
     </div>
 </div>
+
+<script>
+// Update threshold unit when ingredient unit changes
+document.getElementById('ingredient_unit').addEventListener('input', function(e) {
+    document.querySelector('.threshold-unit').textContent = e.target.value;
+});
+</script>
 
 <?php
 include('footer.php');

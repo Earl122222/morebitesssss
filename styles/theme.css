@@ -1,0 +1,132 @@
+/* Additional Theme-specific styles */
+
+/* Dark theme specific overrides */
+[data-theme="dark"] {
+    /* Table styles */
+    .table {
+        border-color: var(--border-color);
+    }
+    
+    .table thead th {
+        background-color: var(--bg-secondary);
+        border-color: var(--border-color);
+    }
+    
+    .table-striped tbody tr:nth-of-type(odd) {
+        background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    /* Modal styles */
+    .modal-content {
+        background-color: var(--card-bg);
+        border-color: var(--border-color);
+    }
+    
+    .modal-header {
+        border-bottom-color: var(--border-color);
+    }
+    
+    .modal-footer {
+        border-top-color: var(--border-color);
+    }
+    
+    /* Alert styles */
+    .alert-success {
+        background-color: rgba(40, 167, 69, 0.2);
+        border-color: rgba(40, 167, 69, 0.3);
+        color: #2ecc71;
+    }
+    
+    .alert-danger {
+        background-color: rgba(220, 53, 69, 0.2);
+        border-color: rgba(220, 53, 69, 0.3);
+        color: #e74c3c;
+    }
+    
+    /* Form styles */
+    .form-control:disabled,
+    .form-control[readonly] {
+        background-color: var(--bg-secondary);
+        border-color: var(--border-color);
+    }
+    
+    .input-group-text {
+        background-color: var(--bg-secondary);
+        border-color: var(--border-color);
+        color: var(--text-primary);
+    }
+    
+    /* Select styles */
+    select option {
+        background-color: var(--card-bg);
+        color: var(--text-primary);
+    }
+    
+    /* Dropdown styles */
+    .dropdown-menu {
+        background-color: var(--card-bg);
+        border-color: var(--border-color);
+    }
+    
+    .dropdown-item {
+        color: var(--text-primary);
+    }
+    
+    .dropdown-item:hover {
+        background-color: var(--bg-secondary);
+    }
+    
+    /* Card hover effect */
+    .card:hover {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Light theme specific overrides */
+[data-theme="light"] {
+    /* Card hover effect */
+    .card:hover {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Table hover effect */
+    .table-hover tbody tr:hover {
+        background-color: rgba(0, 0, 0, 0.075);
+    }
+}
+
+/* Common animations */
+.theme-transition {
+    transition: all 0.3s ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 5px;
+}
+
+[data-theme="dark"] ::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+} 

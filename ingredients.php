@@ -21,7 +21,7 @@ include('header.php');
         <div class="row">
             <div class="col col-md-6"><b>Ingredient List</b></div>
             <div class="col col-md-6">
-                <a href="add_ingredient.php" class="btn btn-success btn-sm float-end">Add</a>
+                <a href="add_ingredients.php" class="btn btn-success btn-sm float-end">Add</a>
             </div>
         </div>
     </div>

@@ -1,0 +1,81 @@
+[04-Mar-2025 01:07:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:07:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:08:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:08:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:09:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:09:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:10:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:10:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:11:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:11:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:12:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:12:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:13:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:13:18 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:13:45 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:13:45 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:13:46 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:13:51 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:13:56 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:01 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:01 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:06 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:11 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:16 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:21 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:26 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:31 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:31 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:33 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:36 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:39 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:40 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:41 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:41 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:14:42 Asia/Manila] Database connection error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+[04-Mar-2025 01:16:03 Asia/Manila] Database Error: SQLSTATE[HY000]: General error: 1298 Unknown or incorrect time zone: 'Asia/Manila'
+Trace: #0 C:\xampp\htdocs\pos_system\db_connect.php(41): PDO->exec('SET time_zone =...')
+#1 C:\xampp\htdocs\pos_system\ingredients.php(3): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+[04-Mar-2025 01:16:47 Asia/Manila] Timezone tables not loaded. Using offset +08:00 instead. To fix this permanently, run 'mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql'
+[04-Mar-2025 01:16:47 Asia/Manila] Timezone tables not loaded. Using offset +08:00 instead. To fix this permanently, run 'mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql'
+[04-Mar-2025 01:16:47 Asia/Manila] Timezone tables not loaded. Using offset +08:00 instead. To fix this permanently, run 'mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql'
+[04-Mar-2025 01:16:47 Asia/Manila] Timezone tables not loaded. Using offset +08:00 instead. To fix this permanently, run 'mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql'
+[04-Mar-2025 01:16:52 Asia/Manila] Timezone tables not loaded. Using offset +08:00 instead. To fix this permanently, run 'mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql'
+[04-Mar-2025 01:16:55 Asia/Manila] Timezone tables not loaded. Using offset +08:00 instead. To fix this permanently, run 'mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql'
+[04-Mar-2025 01:16:55 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected in C:\xampp\htdocs\pos_system\delete_ingredient.php:9
+Stack trace:
+#0 C:\xampp\htdocs\pos_system\delete_ingredient.php(9): PDO->prepare('SELECT COUNT(*)...')
+#1 {main}
+  thrown in C:\xampp\htdocs\pos_system\delete_ingredient.php on line 9
+[03-Mar-2025 18:16:57 Europe/Berlin] PHP Notice:  date_default_timezone_set(): Timezone ID '+08:00' is invalid in C:\xampp\htdocs\pos_system\config.php on line 94
+[03-Mar-2025 18:16:57 Europe/Berlin] PHP Notice:  date_default_timezone_set(): Timezone ID '+08:00' is invalid in C:\xampp\htdocs\pos_system\config.php on line 94
+[03-Mar-2025 18:16:58 Europe/Berlin] PHP Notice:  date_default_timezone_set(): Timezone ID '+08:00' is invalid in C:\xampp\htdocs\pos_system\config.php on line 94
+[03-Mar-2025 18:16:58 Europe/Berlin] PHP Notice:  date_default_timezone_set(): Timezone ID '+08:00' is invalid in C:\xampp\htdocs\pos_system\config.php on line 94
+[03-Mar-2025 18:16:58 Europe/Berlin] PHP Notice:  date_default_timezone_set(): Timezone ID '+08:00' is invalid in C:\xampp\htdocs\pos_system\config.php on line 94
+[03-Mar-2025 18:17:03 Europe/Berlin] PHP Notice:  date_default_timezone_set(): Timezone ID '+08:00' is invalid in C:\xampp\htdocs\pos_system\config.php on line 94
+[03-Mar-2025 18:17:08 Europe/Berlin] PHP Notice:  date_default_timezone_set(): Timezone ID '+08:00' is invalid in C:\xampp\htdocs\pos_system\config.php on line 94
+[03-Mar-2025 18:17:13 Europe/Berlin] PHP Notice:  date_default_timezone_set(): Timezone ID '+08:00' is invalid in C:\xampp\htdocs\pos_system\config.php on line 94
+[03-Mar-2025 18:17:19 Europe/Berlin] PHP Notice:  date_default_timezone_set(): Timezone ID '+08:00' is invalid in C:\xampp\htdocs\pos_system\config.php on line 94
+[03-Mar-2025 18:17:24 Europe/Berlin] PHP Notice:  date_default_timezone_set(): Timezone ID '+08:00' is invalid in C:\xampp\htdocs\pos_system\config.php on line 94
+[03-Mar-2025 18:17:29 Europe/Berlin] PHP Notice:  date_default_timezone_set(): Timezone ID '+08:00' is invalid in C:\xampp\htdocs\pos_system\config.php on line 94
+[03-Mar-2025 18:17:29 Europe/Berlin] PHP Notice:  date_default_timezone_set(): Timezone ID '+08:00' is invalid in C:\xampp\htdocs\pos_system\config.php on line 94
+[04-Mar-2025 01:17:58 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected in C:\xampp\htdocs\pos_system\delete_user.php:17
+Stack trace:
+#0 C:\xampp\htdocs\pos_system\delete_user.php(17): PDO->prepare('DELETE FROM pos...')
+#1 {main}
+  thrown in C:\xampp\htdocs\pos_system\delete_user.php on line 17
+[04-Mar-2025 01:23:05 Asia/Manila] PHP Fatal error:  Uncaught Error: Call to undefined function checkUserRole() in C:\xampp\htdocs\pos_system\delete_user.php:8
+Stack trace:
+#0 {main}
+  thrown in C:\xampp\htdocs\pos_system\delete_user.php on line 8
+[04-Mar-2025 01:23:36 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected in C:\xampp\htdocs\pos_system\delete_ingredient.php:9
+Stack trace:
+#0 C:\xampp\htdocs\pos_system\delete_ingredient.php(9): PDO->prepare('SELECT COUNT(*)...')
+#1 {main}
+  thrown in C:\xampp\htdocs\pos_system\delete_ingredient.php on line 9
+[04-Mar-2025 01:35:36 Asia/Manila] PHP Fatal error:  Uncaught PDOException: SQLSTATE[3D000]: Invalid catalog name: 1046 No database selected in C:\xampp\htdocs\pos_system\delete_ingredient.php:9
+Stack trace:
+#0 C:\xampp\htdocs\pos_system\delete_ingredient.php(9): PDO->prepare('SELECT COUNT(*)...')
+#1 {main}
+  thrown in C:\xampp\htdocs\pos_system\delete_ingredient.php on line 9
