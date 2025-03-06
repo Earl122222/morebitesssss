@@ -6,7 +6,8 @@ require_once 'auth_function.php';
 checkAdminLogin();
 
 // Fetch category for the dropdown
-$categorys = $pdo->query("SELECT category_id, category_name FROM pos_category WHERE category_status = 'Active'")->fetchAll(PDO::FETCH_ASSOC);
+$sql = "SELECT id, category_name FROM product_categories ORDER BY category_name";
+$categories = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 
 $message = '';
 $errors = [];
@@ -131,8 +132,8 @@ if($message !== ''){
                             <label for="category_id">Category</label>
                             <select name="category_id" id="category_id" class="form-select">
                                 <option value="">Select Category</option>
-                                <?php foreach ($categorys as $category): ?>
-                                    <option value="<?php echo $category['category_id']; ?>" <?php if (isset($category_id) && $category_id == $category['category_id']) echo 'selected'; ?>><?php echo $category['category_name']; ?></option>
+                                <?php foreach ($categories as $category): ?>
+                                    <option value="<?php echo $category['id']; ?>" <?php if (isset($category_id) && $category_id == $category['id']) echo 'selected'; ?>><?php echo $category['category_name']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                         </div>

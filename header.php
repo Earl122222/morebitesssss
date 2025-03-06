@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>More Bites</title>
+        <title>MoreBites - <?php echo isset($_SESSION['user_type']) ? $_SESSION['user_type'] . ' Dashboard' : 'Login'; ?></title>
         
         <?php
         if (session_status() === PHP_SESSION_NONE) {
@@ -20,6 +20,9 @@
         <!-- Font Awesome -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         
+        <!-- DataTables CSS -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+        
         <!-- Inter Font -->
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
         
@@ -29,9 +32,14 @@
         <!-- Scripts -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script>
         <script src="js/notifications.js"></script>
+
+        <!-- SweetAlert2 -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         
         <style>
             /* Theme Variables */
@@ -720,71 +728,126 @@
                 </div>
                 <div class="sidebar-menu">
                     <ul class="menu-list">
-                        <li class="menu-item">
-                            <a href="dashboard.php" class="menu-link">
-                                <i class="fas fa-tachometer-alt"></i>
-                                <span>Dashboard</span>
-                            </a>
-                        </li>
-                        <?php if(isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'Admin'): ?>
-                        <li class="menu-item">
-                            <a href="category.php" class="menu-link">
-                                <i class="fas fa-th-list"></i>
-                                <span>Category</span>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="user.php" class="menu-link">
-                                <i class="fas fa-users"></i>
-                                <span>User</span>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="ingredients.php" class="menu-link has-submenu">
-                                <i class="fas fa-mortar-pestle"></i>
-                                <span>Ingredients</span>
-                                <i class="fas fa-chevron-down submenu-indicator"></i>
-                            </a>
-                            <ul class="submenu">
-                                <li class="submenu-item">
-                                    <a href="ingredients.php" class="submenu-link">
-                                        <i class="fas fa-list"></i>
-                                        <span>All Ingredients</span>
+                        <?php if(isset($_SESSION['user_type'])): ?>
+                            <?php if($_SESSION['user_type'] === 'Stockman'): ?>
+                                <li class="menu-item">
+                                    <a href="stockman_dashboard.php" class="menu-link">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <span>Dashboard</span>
                                     </a>
                                 </li>
-                                <li class="submenu-item">
-                                    <a href="low_stock.php" class="submenu-link">
+                                <li class="menu-item">
+                                    <a href="inventory.php" class="menu-link">
+                                        <i class="fas fa-boxes"></i>
+                                        <span>Inventory Management</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="stock_alerts.php" class="menu-link">
                                         <i class="fas fa-exclamation-triangle"></i>
-                                        <span>Low Stock</span>
+                                        <span>Stock Alerts</span>
                                     </a>
                                 </li>
-                                <li class="submenu-item">
-                                    <a href="ingredients_log.php" class="submenu-link">
+                                <li class="menu-item">
+                                    <a href="categories.php" class="menu-link">
+                                        <i class="fas fa-tags"></i>
+                                        <span>Ingredients Categories</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="stock_value.php" class="menu-link">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        <span>Stock Value</span>
+                                    </a>
+                                </li>
+                            <?php elseif($_SESSION['user_type'] === 'Cashier'): ?>
+                                <li class="menu-item">
+                                    <a href="cashier_dashboard.php" class="menu-link">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="order.php" class="menu-link">
                                         <i class="fas fa-history"></i>
-                                        <span>Ingredients Log</span>
+                                        <span>Order History</span>
                                     </a>
                                 </li>
-                            </ul>
-                        </li>
-                        <li class="menu-item">
-                            <a href="product.php" class="menu-link">
-                                <i class="fas fa-utensils"></i>
-                                <span>Product</span>
-                            </a>
-                        </li>
+                            <?php elseif($_SESSION['user_type'] === 'Admin'): ?>
+                                <li class="menu-item">
+                                    <a href="dashboard.php" class="menu-link">
+                                        <i class="fas fa-tachometer-alt"></i>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="user.php" class="menu-link">
+                                        <i class="fas fa-users"></i>
+                                        <span>User</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="ingredients.php" class="menu-link has-submenu">
+                                        <i class="fas fa-mortar-pestle"></i>
+                                        <span>Ingredients</span>
+                                        <i class="fas fa-chevron-down submenu-indicator"></i>
+                                    </a>
+                                    <ul class="submenu">
+                                        <li class="submenu-item">
+                                            <a href="ingredients.php" class="submenu-link">
+                                                <i class="fas fa-list"></i>
+                                                <span>All Ingredients</span>
+                                            </a>
+                                        </li>
+                                        <li class="submenu-item">
+                                            <a href="category.php" class="submenu-link">
+                                                <i class="fas fa-th-list"></i>
+                                                <span>Ingredients Category</span>
+                                            </a>
+                                        </li>
+                                        <li class="submenu-item">
+                                            <a href="low_stock.php" class="submenu-link">
+                                                <i class="fas fa-exclamation-triangle"></i>
+                                                <span>Low Stock</span>
+                                            </a>
+                                        </li>
+                                        <li class="submenu-item">
+                                            <a href="ingredients_log.php" class="submenu-link">
+                                                <i class="fas fa-history"></i>
+                                                <span>Ingredients Log</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="product.php" class="menu-link has-submenu">
+                                        <i class="fas fa-utensils"></i>
+                                        <span>Product</span>
+                                        <i class="fas fa-chevron-down submenu-indicator"></i>
+                                    </a>
+                                    <ul class="submenu">
+                                        <li class="submenu-item">
+                                            <a href="product.php" class="submenu-link">
+                                                <i class="fas fa-list"></i>
+                                                <span>All Products</span>
+                                            </a>
+                                        </li>
+                                        <li class="submenu-item">
+                                            <a href="product_category.php" class="submenu-link">
+                                                <i class="fas fa-th-list"></i>
+                                                <span>Product Category</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="order.php" class="menu-link">
+                                        <i class="fas fa-history"></i>
+                                        <span>Order History</span>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
                         <?php endif; ?>
-                        <li class="menu-item">
-                            <a href="add_order.php" class="menu-link">
-                                <i class="fas fa-cart-plus"></i>
-                                <span>Create Order</span>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a href="order.php" class="menu-link">
-                                <i class="fas fa-history"></i>
-                                <span>Order History</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </aside>
@@ -918,68 +981,63 @@ setInterval(updateClock, 1000);
 
         // Notification System
         function checkLowStockItems() {
-            fetch('check_low_stock.php')
+            fetch('notifications.php?fetch=notifications')
                 .then(response => response.json())
                 .then(data => {
                     const badge = document.getElementById('notification-badge');
                     const notificationList = document.getElementById('notification-list');
                     
-                    // Update badge count
-                    badge.textContent = data.length;
-                    badge.style.display = data.length > 0 ? 'block' : 'none';
-                    
-                    // Clear existing notifications
-                    notificationList.innerHTML = '';
-                    
-                    if (data.length === 0) {
-                        notificationList.innerHTML = '<div class="notification-item">No notifications</div>';
-                        return;
-                    }
-                    
-                    // Add new notifications
-                    data.forEach(item => {
-                        const notificationItem = document.createElement('div');
-                        notificationItem.className = 'notification-item';
+                    if (data.success && data.notifications) {
+                        // Update badge count
+                        badge.textContent = data.count;
+                        badge.style.display = data.count > 0 ? 'block' : 'none';
                         
-                        let statusMessage = '';
-                        let badgeClass = '';
+                        // Clear existing notifications
+                        notificationList.innerHTML = '';
                         
-                        if (item.quantity <= 0) {
-                            statusMessage = 'is out of stock';
-                            badgeClass = 'bg-danger';
-                        } else if (item.quantity <= item.threshold * 0.5) {
-                            statusMessage = 'is critically low on stocks';
-                            badgeClass = 'bg-danger';
-                        } else {
-                            statusMessage = 'is low on stocks';
-                            badgeClass = 'bg-warning';
+                        if (data.count === 0) {
+                            notificationList.innerHTML = '<div class="notification-item">No notifications</div>';
+                            return;
                         }
                         
-                        notificationItem.innerHTML = `
-                            <a href="low_stock.php" class="text-decoration-none">
-                                <div class="d-flex align-items-center">
-                                    <div class="flex-grow-1">
-                                        <div class="notification-message" style="color: var(--text-primary) !important;">
-                                            The item <strong style="color: var(--text-primary) !important;">${item.ingredient_name}</strong> ${statusMessage}
+                        // Add new notifications
+                        data.notifications.forEach(item => {
+                            const notificationItem = document.createElement('div');
+                            notificationItem.className = 'notification-item';
+                            
+                            notificationItem.innerHTML = `
+                                <a href="low_stock.php" class="text-decoration-none">
+                                    <div class="d-flex align-items-center">
+                                        <div class="flex-grow-1">
+                                            <div class="notification-message">
+                                                <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                                                ${item.message}
+                                            </div>
+                                            <div class="small text-muted">
+                                                Current: ${item.quantity} ${item.threshold} (Min: ${item.threshold})
+                                            </div>
                                         </div>
-                                        <div class="small" style="color: var(--text-muted) !important;">
-                                            Current stock: ${item.quantity} ${item.unit} (Threshold: ${item.threshold} ${item.unit})
-                                        </div>
+                                        <span class="badge ${item.badge === 'danger' ? 'bg-danger' : 'bg-warning'} ms-2">
+                                            ${item.status}
+                                        </span>
                                     </div>
-                                    <span class="badge ${badgeClass} ms-2">${item.quantity <= 0 ? 'Out of Stock' : (item.quantity <= item.threshold * 0.5 ? 'Critical' : 'Low')}</span>
-                                </div>
-                            </a>
-                        `;
-                        
-                        notificationList.appendChild(notificationItem);
-                    });
+                                </a>
+                            `;
+                            
+                            notificationList.appendChild(notificationItem);
+                        });
+                    }
                 })
-                .catch(error => console.error('Error checking low stock:', error));
+                .catch(error => {
+                    console.error('Error checking notifications:', error);
+                    const notificationList = document.getElementById('notification-list');
+                    notificationList.innerHTML = '<div class="notification-item text-danger">Error loading notifications</div>';
+                });
         }
 
-        // Check for notifications every 5 seconds
+        // Check for notifications immediately and then every 30 seconds
         checkLowStockItems();
-        setInterval(checkLowStockItems, 5000);
+        setInterval(checkLowStockItems, 30000);
 
         // Initialize notification dropdown
         const notificationButton = document.getElementById('notificationButton');

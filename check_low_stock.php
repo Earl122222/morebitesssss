@@ -1,46 +1,67 @@
 <?php
-require_once 'db_connect.php';
+// Enable error reporting
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
-// Set headers
 header('Content-Type: application/json');
-header('Cache-Control: no-cache, must-revalidate');
+
+session_start();
+if (!isset($_SESSION['user_type']) || ($_SESSION['user_type'] !== 'Admin' && $_SESSION['user_type'] !== 'Stockman')) {
+    http_response_code(403);
+    echo json_encode(['error' => 'Unauthorized access']);
+    exit;
+}
+
+require_once 'config.php';
 
 try {
-    // Query to get ingredients where quantity is less than or equal to their threshold
-    $query = "SELECT 
-                ingredient_name,
-                ingredient_quantity as quantity,
-                threshold,
-                ingredient_unit as unit 
-              FROM ingredients 
-              WHERE ingredient_quantity <= threshold 
-              ORDER BY 
-                CASE 
-                    WHEN ingredient_quantity = 0 THEN 1
-                    WHEN ingredient_quantity <= threshold * 0.5 THEN 2
-                    ELSE 3
-                END,
-                ingredient_quantity/threshold ASC";
-    
-    $stmt = $pdo->prepare($query);
-    $stmt->execute();
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
-    // Ensure proper encoding of special characters
-    array_walk_recursive($results, function(&$item) {
-        if (is_string($item)) {
-            $item = htmlspecialchars_decode($item, ENT_QUOTES);
-        }
-    });
-    
-    echo json_encode($results, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-} catch (PDOException $e) {
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    if ($conn->connect_error) {
+        throw new Exception("Connection failed: " . $conn->connect_error);
+    }
+
+    // Get items where quantity is at or below minimum stock level
+    $sql = "SELECT 
+                i.ingredient_id,
+                i.ingredient_name,
+                i.quantity,
+                i.unit,
+                i.min_stock,
+                c.category_name
+            FROM ingredients i
+            LEFT JOIN categories c ON i.category_id = c.category_id
+            WHERE i.quantity <= i.min_stock AND i.quantity > 0
+            ORDER BY i.ingredient_name";
+
+    $result = $conn->query($sql);
+    if (!$result) {
+        throw new Exception("Query failed: " . $conn->error);
+    }
+
+    $low_stock = array();
+    while ($row = $result->fetch_assoc()) {
+        $low_stock[] = array(
+            'ingredient_id' => $row['ingredient_id'],
+            'ingredient_name' => $row['ingredient_name'],
+            'quantity' => $row['quantity'],
+            'unit' => $row['unit'],
+            'min_stock' => $row['min_stock'],
+            'category_name' => $row['category_name']
+        );
+    }
+
+    echo json_encode([
+        'success' => true,
+        'low_stock' => $low_stock
+    ]);
+
+} catch (Exception $e) {
     http_response_code(500);
     echo json_encode([
-        'error' => true,
-        'message' => 'Database error: ' . $e->getMessage()
+        'success' => false,
+        'error' => $e->getMessage()
     ]);
 }
 
-// Close connection
-$pdo = null; 
+$conn->close();
+?> 

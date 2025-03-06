@@ -50,13 +50,30 @@ $(document).ready(function() {
         "serverSide": true,
         "ajax": {
             "url": "user_ajax.php",
-            "type": "GET"
+            "type": "GET",
+            "dataSrc": function(json) {
+                console.log('Data received from server:', json);
+                return json.data;
+            }
         },
         "columns": [
             { "data": "user_id" },
             { "data": "user_name" },
             { "data": "user_email" },
-            { "data": "user_type" },
+            { 
+                "data": "user_type",
+                "render": function(data, type, row) {
+                    console.log('Rendering user type:', data, 'for user:', row.user_name);
+                    if (data === 'Admin') {
+                        return '<span class="badge bg-primary">Admin</span>';
+                    } else if (data === 'Cashier') {
+                        return '<span class="badge bg-info">Cashier</span>';
+                    } else if (data === 'Stockman') {
+                        return '<span class="badge bg-warning">Stockman</span>';
+                    }
+                    return data || '';
+                }
+            },
             { 
                 "data": null,
                 "render": function(data, type, row){

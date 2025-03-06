@@ -1,108 +1,68 @@
 <?php
-
-require_once 'db_connect.php';
-require_once 'auth_function.php';
-
-checkAdminLogin();
-
-$category_id = $_GET['id'] ?? '';
-$category_name = '';
-$category_status = 'Active';
-$message = '';
-
-// Fetch the current category data
-if (!empty($category_id)) {
-    $stmt = $pdo->prepare("SELECT * FROM pos_category WHERE category_id = :category_id");
-    $stmt->execute(['category_id' => $category_id]);
-    $category = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($category) {
-        $category_name = $category['category_name'];
-        $category_status = $category['category_status'];
-    } else {
-        $message = 'Category not found.';
-    }
+session_start();
+if (!isset($_SESSION['user_type']) || $_SESSION['user_type'] !== 'Admin') {
+    http_response_code(403);
+    echo json_encode(['success' => false, 'message' => 'Unauthorized access']);
+    exit;
 }
 
-// Handle form submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+require_once 'config.php';
+
+header('Content-Type: application/json');
+
+try {
+    if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+        throw new Exception('Invalid request method');
+    }
+
+    if (empty($_POST['category_id']) || empty($_POST['category_name'])) {
+        throw new Exception('Category ID and name are required');
+    }
+
+    $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+    
+    if ($conn->connect_error) {
+        throw new Exception("Connection failed: " . $conn->connect_error);
+    }
+
+    $category_id = intval($_POST['category_id']);
     $category_name = trim($_POST['category_name']);
-    $category_status = trim($_POST['category_status']);
-    $category_id = $_POST['category_id'];
-    // Validate inputs
-    if (empty($category_name)) {
-        $message = 'Category name is required.';
-    } else {
-        // Check if category name already exists for another category
-        $stmt = $pdo->prepare("SELECT COUNT(*) FROM pos_category WHERE category_name = :category_name AND category_id != :category_id");
-        $stmt->execute([
-            'category_name' => $category_name,
-            'category_id' => $category_id
-        ]);
-        $count = $stmt->fetchColumn();
+    $description = !empty($_POST['description']) ? trim($_POST['description']) : '';
 
-        if ($count > 0) {
-            $message = 'Category with this name already exists.';
-        } else {
-            // Update the database
-            try {
-                $stmt = $pdo->prepare("UPDATE pos_category SET category_name = :category_name, category_status = :category_status WHERE category_id = :category_id");
-                $stmt->execute([
-                    'category_name' => $category_name,
-                    'category_status' => $category_status,
-                    'category_id' => $category_id
-                ]);
-                header('location:category.php');
-            } catch (PDOException $e) {
-                $message = 'Database error: ' . $e->getMessage();
-            }
-        }
+    // Check if category exists
+    $stmt = $conn->prepare("SELECT category_id FROM categories WHERE category_name = ? AND category_id != ?");
+    $stmt->bind_param("si", $category_name, $category_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows > 0) {
+        throw new Exception('Category name already exists');
     }
+
+    // Update category
+    $stmt = $conn->prepare("UPDATE categories SET category_name = ?, description = ? WHERE category_id = ?");
+    $stmt->bind_param("ssi", $category_name, $description, $category_id);
+    
+    if (!$stmt->execute()) {
+        throw new Exception("Error updating category: " . $stmt->error);
+    }
+
+    if ($stmt->affected_rows === 0) {
+        throw new Exception("No category found with ID: " . $category_id);
+    }
+
+    echo json_encode([
+        'success' => true,
+        'message' => 'Category updated successfully'
+    ]);
+
+} catch (Exception $e) {
+    http_response_code(400);
+    echo json_encode([
+        'success' => false,
+        'message' => $e->getMessage()
+    ]);
 }
 
-include('header.php');
-?>
-
-<h1 class="mt-4">Edit Category</h1>
-<ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item"><a href="dashboard.php">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="category.php">Category Management</a></li>
-    <li class="breadcrumb-item active">Edit Category</li>
-</ol>
-
-<div class="row">
-    <div class="col-md-4">
-        <?php
-        if(isset($message) && $message !== ''){
-            echo '
-            <div class="alert alert-danger">
-            '.$message.'
-            </div>
-            ';
-        }
-        ?>
-        <div class="card">
-            <div class="card-header">Edit Category</div>
-            <div class="card-body">
-            <form method="post" action="edit_category.php?id=<?php echo htmlspecialchars($category_id); ?>">
-                <div class="mb-3">
-                    <label for="category_name">Category Name</label>
-                    <input type="text" id="category_name" name="category_name" class="form-control" value="<?php echo htmlspecialchars($category_name); ?>">
-                </div>
-                <div class="mb-3">
-                    <label for="category_status">Category Status</label>
-                    <select id="category_status" name="category_status" class="form-select">
-                        <option value="Active" <?php if ($category_status == 'Active') echo 'selected'; ?>>Active</option>
-                        <option value="Inactive" <?php if ($category_status == 'Inactive') echo 'selected'; ?>>Inactive</option>
-                    </select>
-                </div>
-                <input type="hidden" name="category_id" value="<?php echo htmlspecialchars($category_id); ?>">
-                <input type="submit" value="Update Category" class="btn btn-primary">
-            </form>
-        </div>
-    </div>
-</div>
-
-<?php
-include('footer.php');
+$conn->close();
 ?>

@@ -10,6 +10,7 @@ $user_id = (isset($_GET['id'])) ? $_GET['id'] :'';
 $user_name = '';
 $user_email = '';
 $user_status = 'Active';
+$user_type = '';
 
 // Fetch the current user data
 if (!empty($user_id)) {
@@ -21,6 +22,7 @@ if (!empty($user_id)) {
         $user_name = $user["user_name"];
         $user_email = $user["user_email"];
         $user_status = $user["user_status"];
+        $user_type = $user["user_type"];
     } else {
         $message = 'User not found.';
     }
@@ -31,9 +33,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_name = trim($_POST['user_name']);
     $user_email = trim($_POST['user_email']);
     $user_status = trim($_POST['user_status']);
+    $user_type = trim($_POST['user_type']);
     
     // Validate inputs
-    if (empty($user_name) || empty($user_email) || empty($user_status)) {
+    if (empty($user_name) || empty($user_email) || empty($user_status) || empty($user_type)) {
         $message = 'All fields are required.';
     } elseif (!filter_var($user_email, FILTER_VALIDATE_EMAIL)) {
         $message = 'Invalid email format.';
@@ -49,11 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Update the database
             if (empty($message)) {
                 try {
-                    $stmt = $pdo->prepare("UPDATE pos_user SET user_name = :user_name, user_email = :user_email, user_status = :user_status WHERE user_id = :user_id");
+                    $stmt = $pdo->prepare("UPDATE pos_user SET user_name = :user_name, user_email = :user_email, user_status = :user_status, user_type = :user_type WHERE user_id = :user_id");
                     $stmt->execute([
                         'user_name'       => $user_name,
                         'user_email'      => $user_email,
                         'user_status'     => $user_status,
+                        'user_type'       => $user_type,
                         'user_id'         => $user_id
                     ]);
                     header('location:user.php');
@@ -97,6 +101,14 @@ include('header.php');
                         <div class="mb-3">
                             <label for="user_email">Email:</label>
                             <input type="email" id="user_email" name="user_email" class="form-control" value="<?php echo htmlspecialchars($user_email); ?>">
+                        </div>
+                        <div class="mb-3">
+                            <label for="user_type">User Type:</label>
+                            <select id="user_type" name="user_type" class="form-select">
+                                <option value="Admin" <?php echo ($user_type == 'Admin') ? 'selected' : ''; ?>>Admin</option>
+                                <option value="Cashier" <?php echo ($user_type == 'Cashier') ? 'selected' : ''; ?>>Cashier</option>
+                                <option value="Stockman" <?php echo ($user_type == 'Stockman') ? 'selected' : ''; ?>>Stockman</option>
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="user_status">Status:</label>

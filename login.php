@@ -4,11 +4,6 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-if (!file_exists('db_connect.php')) {
-    header('Location: install.php');
-    exit;
-}
-
 require_once 'db_connect.php';
 require_once 'auth_function.php';
 require_once 'db_functions.php'; // Include the db_functions.php file
