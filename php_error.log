@@ -91,3 +91,21 @@
 [06-Mar-2025 18:39:03 Europe/Berlin] Created transaction with ID: 5
 [06-Mar-2025 18:39:03 Europe/Berlin] Adding item - Product ID: 7, Quantity: 12, Price: 122, Subtotal: 1464
 [06-Mar-2025 18:39:03 Europe/Berlin] Transaction committed successfully
+[10-Mar-2025 13:35:59 Europe/Berlin] Received input: {"order":[{"id":8,"name":"Creamy Oreo","price":122,"quantity":10}],"amount_paid":2000,"total":1366.4}
+[10-Mar-2025 13:35:59 Europe/Berlin] Processing order for user: 15
+[10-Mar-2025 13:35:59 Europe/Berlin] Order data: Array
+(
+    [0] => Array
+        (
+            [id] => 8
+            [name] => Creamy Oreo
+            [price] => 122
+            [quantity] => 10
+        )
+
+)
+
+[10-Mar-2025 13:35:59 Europe/Berlin] Order totals - Subtotal: 1220, Tax: 146.4, Total: 1366.4, Change: 633.6
+[10-Mar-2025 13:35:59 Europe/Berlin] Created transaction with ID: 6
+[10-Mar-2025 13:35:59 Europe/Berlin] Adding item - Product ID: 8, Quantity: 10, Price: 122, Subtotal: 1220
+[10-Mar-2025 13:35:59 Europe/Berlin] Transaction committed successfully

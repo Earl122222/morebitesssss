@@ -783,7 +783,13 @@
                                 <li class="menu-item">
                                     <a href="user.php" class="menu-link">
                                         <i class="fas fa-users"></i>
-                                        <span>User</span>
+                                        <span>Users</span>
+                                    </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="ingredient_costs.php" class="menu-link">
+                                        <i class="fas fa-coins"></i>
+                                        <span>Cost</span>
                                     </a>
                                 </li>
                                 <li class="menu-item">

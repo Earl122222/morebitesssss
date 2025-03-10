@@ -9,118 +9,39 @@ if (!isset($_SESSION['user_type']) || !in_array($_SESSION['user_type'], ['Admin'
     exit;
 }
 
-require_once('navigation.php');
+require_once('header.php');
 ?>
 
-<!-- DataTables CSS -->
-<link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
-
-<style>
-    .order-items {
-        max-width: 300px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-    .btn-group {
-        display: flex;
-        gap: 5px;
-    }
-    .btn-pdf {
-        background-color: #28a745;
-        color: white;
-        border: none;
-        padding: 4px 8px;
-        border-radius: 4px;
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-    }
-    .btn-delete {
-        background-color: #dc3545;
-        color: white;
-        border: none;
-        padding: 4px 8px;
-        border-radius: 4px;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 5px;
-    }
-    .btn-pdf:hover {
-        background-color: #218838;
-        color: white;
-        text-decoration: none;
-    }
-    .btn-delete:hover {
-        background-color: #c82333;
-        color: white;
-    }
-    .card {
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        margin-bottom: 20px;
-    }
-    .card-header {
-        background: #f8f9fa;
-        border-bottom: 1px solid #dee2e6;
-        padding: 15px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .card-body {
-        padding: 20px;
-    }
-    .table thead th {
-        background-color: #f8f9fa;
-        border-bottom: 2px solid #dee2e6;
-    }
-    .table td {
-        vertical-align: middle;
-    }
-</style>
-
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Order History</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-        <li class="breadcrumb-item active">Order History</li>
-    </ol>
-    
-    <div class="card">
-        <div class="card-header">
-            <h5 class="mb-0">Order List</h5>
-            <a href="pos.php" class="btn btn-primary btn-sm">
-                <i class="fas fa-plus"></i> New Order
-            </a>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table id="orderTable" class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Order #</th>
-                            <th>Cashier</th>
-                            <th>Total</th>
-                            <th>Date/Time</th>
-                            <th>Items</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                </table>
+    <div class="row">
+        <div class="col-12">
+            <div class="card mt-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Order History</h5>
+                    <a href="pos.php" class="btn btn-primary btn-sm">
+                        <i class="fas fa-plus"></i> New Order
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="orderTable" class="table table-striped table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Order #</th>
+                                    <th>Cashier</th>
+                                    <th>Total</th>
+                                    <th>Date/Time</th>
+                                    <th>Items</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-
-<!-- DataTables & Plugins -->
-<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     $(document).ready(function() {
@@ -165,9 +86,9 @@ require_once('navigation.php');
                     data: null,
                     render: function(data) {
                         var buttons = '<div class="btn-group">';
-                        buttons += '<a href="print_receipt.php?id=' + data.transaction_id + '" class="btn-pdf" target="_blank"><i class="fas fa-print"></i> Print</a>';
+                        buttons += '<a href="print_receipt.php?id=' + data.transaction_id + '" class="btn btn-info btn-sm" target="_blank"><i class="fas fa-print"></i></a>';
                         <?php if ($_SESSION['user_type'] === 'Admin'): ?>
-                        buttons += '<button class="btn-delete" onclick="deleteOrder(' + data.transaction_id + ')"><i class="fas fa-trash"></i> Delete</button>';
+                        buttons += '<button class="btn btn-danger btn-sm" onclick="deleteOrder(' + data.transaction_id + ')"><i class="fas fa-trash"></i></button>';
                         <?php endif; ?>
                         buttons += '</div>';
                         return buttons;
