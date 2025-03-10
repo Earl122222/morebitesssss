@@ -38,3 +38,345 @@
 [06-Mar-2025 14:57:42 Europe/Berlin] Attempting database connection
 [06-Mar-2025 14:57:42 Europe/Berlin] Database connection successful
 [06-Mar-2025 14:57:42 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 16:00:12 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:00:12 Europe/Berlin] Attempting database connection
+[06-Mar-2025 16:00:12 Europe/Berlin] Database connection successful
+[06-Mar-2025 16:00:12 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 16:00:15 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:00:15 Europe/Berlin] Attempting database connection
+[06-Mar-2025 16:00:15 Europe/Berlin] Database connection successful
+[06-Mar-2025 16:00:15 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 16:03:08 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:03:08 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:07:31 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:07:31 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:11:26 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:11:26 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:11:50 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:11:50 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:11:51 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:11:51 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:13:06 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:13:06 Europe/Berlin] Attempting database connection
+[06-Mar-2025 16:13:06 Europe/Berlin] Database connection successful
+[06-Mar-2025 16:13:06 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 16:13:34 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:13:34 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:13:49 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:13:49 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:13:50 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:13:50 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:13:50 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:13:50 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:14:28 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:14:28 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:36:42 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:36:42 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:36:47 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:36:47 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:36:49 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:36:49 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:36:53 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:36:53 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:37:02 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:37:02 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:37:10 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:37:10 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:37:26 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:37:26 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:37:29 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:37:29 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:42:39 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:42:39 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 16:43:33 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:43:33 Europe/Berlin] Attempting database connection
+[06-Mar-2025 16:43:33 Europe/Berlin] Database connection successful
+[06-Mar-2025 16:43:33 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 16:57:15 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 16:57:15 Europe/Berlin] Attempting database connection
+[06-Mar-2025 16:57:15 Europe/Berlin] Database connection successful
+[06-Mar-2025 16:57:15 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 17:06:22 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 17:06:22 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 17:06:26 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 17:06:26 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 17:06:29 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 17:06:29 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 17:06:37 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 17:06:37 Europe/Berlin] Error in dashboard stats: Unauthorized access
+[06-Mar-2025 17:43:13 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 17:43:13 Europe/Berlin] Attempting database connection
+[06-Mar-2025 17:43:13 Europe/Berlin] Database connection successful
+[06-Mar-2025 17:43:13 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 17:58:18 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 17:58:18 Europe/Berlin] Attempting database connection
+[06-Mar-2025 17:58:18 Europe/Berlin] Database connection successful
+[06-Mar-2025 17:58:18 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 17:58:33 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 17:58:33 Europe/Berlin] Attempting database connection
+[06-Mar-2025 17:58:33 Europe/Berlin] Database connection successful
+[06-Mar-2025 17:58:33 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 17:58:57 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 17:58:57 Europe/Berlin] Attempting database connection
+[06-Mar-2025 17:58:57 Europe/Berlin] Database connection successful
+[06-Mar-2025 17:58:57 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:00:04 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:00:04 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:00:04 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:00:04 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:00:09 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:00:09 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:00:09 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:00:09 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:00:15 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:00:15 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:00:15 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:00:15 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:02:22 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:02:22 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:02:22 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:02:22 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:02:47 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:02:47 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:02:47 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:02:47 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:04:18 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:04:18 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:04:18 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:04:18 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:07:07 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:07:07 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:07:07 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:07:07 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:07:10 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:07:10 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:07:10 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:07:10 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:07:17 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:07:17 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:07:17 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:07:17 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:07:19 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:07:19 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:07:19 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:07:19 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:07:22 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:07:22 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:07:22 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:07:22 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:08:44 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:08:44 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:08:44 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:08:44 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:08:47 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:08:47 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:08:47 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:08:47 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:08:47 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:08:47 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:08:47 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:08:47 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:08:47 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:08:47 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:08:47 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:08:47 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:08:48 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:08:48 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:08:48 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:08:48 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:08:49 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:08:49 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:08:49 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:08:49 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:08:50 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:08:50 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:08:50 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:08:50 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:08:50 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:08:50 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:08:50 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:08:50 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:08:51 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:08:51 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:08:51 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:08:51 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:08:51 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:08:51 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:08:51 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:08:51 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:08:51 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:08:51 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:08:51 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:08:51 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:09:07 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:09:07 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:09:07 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:09:07 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:17:19 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:17:19 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:17:19 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:17:19 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:17:21 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:17:21 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:17:21 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:17:21 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:17:23 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:17:23 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:17:23 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:17:23 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:17:25 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:17:25 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:17:25 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:17:25 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:17:28 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:17:28 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:17:28 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:17:28 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:19:19 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:19:19 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:19:19 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:19:19 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:20:54 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:20:54 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:20:54 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:20:54 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:21:19 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:21:19 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:21:19 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:21:19 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:21:23 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:21:23 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:21:23 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:21:23 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:21:30 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:21:30 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:21:30 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:21:30 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:22:49 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:22:49 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:22:49 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:22:49 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:22:49 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:22:49 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:22:49 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:22:49 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:22:49 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:22:49 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:22:49 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:22:49 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:22:50 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:22:50 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:22:50 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:22:50 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:22:50 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:22:50 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:22:50 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:22:50 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:22:55 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:22:55 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:22:55 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:22:55 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:23:58 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:23:58 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:23:58 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:23:58 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:24:04 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:24:04 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:24:04 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:24:04 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:24:23 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:24:23 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:24:23 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:24:23 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:26:18 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:26:18 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:26:18 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:26:18 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:28:27 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:28:27 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:28:27 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:28:27 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:29:07 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:29:07 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:29:07 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:29:07 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:32:39 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:32:39 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:32:39 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:32:39 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:32:40 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:32:40 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:32:40 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:32:40 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:32:41 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:32:41 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:32:41 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:32:41 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:32:44 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:32:44 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:32:44 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:32:44 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:34:24 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:34:24 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:34:24 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:34:24 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:35:25 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:35:25 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:35:25 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:35:25 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:38:51 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:38:51 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:38:51 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:38:51 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:38:52 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:38:52 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:38:52 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:38:52 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:44:55 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:44:55 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:44:55 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:44:55 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:44:56 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:44:56 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:44:56 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:44:56 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:44:56 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:44:56 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:44:56 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:44:56 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:44:56 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:44:56 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:44:56 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:44:56 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:47:15 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:47:15 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:47:15 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:47:15 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:47:21 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:47:21 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:47:21 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:47:21 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:47:21 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:47:21 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:47:21 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:47:21 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:50:05 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:50:05 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:50:05 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:50:05 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 18:52:11 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 18:52:11 Europe/Berlin] Attempting database connection
+[06-Mar-2025 18:52:11 Europe/Berlin] Database connection successful
+[06-Mar-2025 18:52:11 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 19:08:07 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 19:08:07 Europe/Berlin] Attempting database connection
+[06-Mar-2025 19:08:07 Europe/Berlin] Database connection successful
+[06-Mar-2025 19:08:07 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 19:08:08 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 19:08:08 Europe/Berlin] Attempting database connection
+[06-Mar-2025 19:08:08 Europe/Berlin] Database connection successful
+[06-Mar-2025 19:08:08 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist
+[06-Mar-2025 19:08:08 Europe/Berlin] Starting dashboard stats generation
+[06-Mar-2025 19:08:08 Europe/Berlin] Attempting database connection
+[06-Mar-2025 19:08:08 Europe/Berlin] Database connection successful
+[06-Mar-2025 19:08:08 Europe/Berlin] Error in dashboard stats: Categories query failed: Table 'pos_system.categories' doesn't exist

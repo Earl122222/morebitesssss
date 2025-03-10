@@ -3,11 +3,7 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Database configuration
-define('DB_HOST', 'localhost');
-define('DB_USER', 'root');
-define('DB_PASS', '');
-define('DB_NAME', 'pos_system');
+require_once('config/database.php');
 
 // Create connection
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -19,26 +15,24 @@ if ($conn->connect_error) {
 
 echo "<h2>Database Check Results:</h2>";
 
-// Check if tables exist
-$tables = ['categories', 'ingredients', 'pos_user'];
+// Check tables
+$tables = ['transactions', 'transaction_items', 'pos_product'];
 foreach ($tables as $table) {
     $result = $conn->query("SHOW TABLES LIKE '$table'");
-    echo "<p>Table '$table': " . ($result->num_rows > 0 ? "EXISTS" : "MISSING") . "</p>";
+    echo "$table exists: " . ($result->num_rows > 0 ? 'Yes' : 'No') . "\n";
     
     if ($result->num_rows > 0) {
-        // Show table structure
-        $structure = $conn->query("DESCRIBE $table");
-        echo "<pre>Structure of $table:\n";
-        while ($row = $structure->fetch_assoc()) {
-            echo json_encode($row, JSON_PRETTY_PRINT) . "\n";
+        $columns = $conn->query("SHOW COLUMNS FROM $table");
+        echo "Columns in $table:\n";
+        while ($col = $columns->fetch_assoc()) {
+            echo "- " . $col['Field'] . " (" . $col['Type'] . ")\n";
         }
-        echo "</pre>";
         
-        // Show row count
-        $count = $conn->query("SELECT COUNT(*) as count FROM $table");
-        $count = $count->fetch_assoc()['count'];
-        echo "<p>Number of rows in $table: $count</p>";
+        // Count records
+        $count = $conn->query("SELECT COUNT(*) as count FROM $table")->fetch_assoc()['count'];
+        echo "Number of records: $count\n";
     }
+    echo "\n";
 }
 
 // Close connection
